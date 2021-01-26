@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stranded in Space</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="test site">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container-wrapper">
+            <div class="container">
+                <div class="character">
+                    <img src="creative-market-preview0-.jpg" alt="">
+                </div>
+                <div class="obstacleBottom"></div>
+                <div class="obstacleTop"></div>
+                <div class="score">
+                    Score: <span class="getScore"></span>
+                </div>
+                <div class="highScore">
+                    High Score:  <span class="getHighScore"></span>
+                </div>
+                <div class="newGame">
+                    <button type="button" id="start">NEW GAME</button>
+                    <button type="button" id="options">OPTIONS</button>
+                    <button type="button" id="leadBtn"><a href="leaderboards.html">LEADERBOARDS</a></button>
+                </div>
+            </div>
+            
+            <div class="touchButtons">
+                <div class="upArrow">
+                    <button id="up" type="button"> <img src="download.png" alt=""> </button>
+                </div>
+                <div class="downArrow">
+                    <button id="down" type="button"> <img src="download.png" alt=""> </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="optionsMenu">
+            <div class="optionTitle">
+                <h4>Select a Map</h4>
+            </div>
+            <div class="maps">
+                <div class="map">
+                    <button type="button" id="map1"><img id="map1Image" src="Starry-Sky-Background-WallpaperTag.jpg" alt=""></button>
+                    <div class="description">
+                        <h3>Space</h3>
+                    </div>
+                </div>
+                <div class="map">
+                    <button type="button" id="map2"><img id="map2Image" src="photo-1464802686167-b939a6910659.jpg" alt=""></button>
+                    <div class="description">
+                        <h3>Space with extra steps</h3>
+                    </div>
+                </div> 
+            </div>
+            <div class="backBtn">
+               <button type="button" id="back">Back</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

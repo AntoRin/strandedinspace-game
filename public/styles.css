@@ -1,0 +1,219 @@
+body{
+    padding: 0;
+    margin: 0;
+    background: black;
+}
+
+.container-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;   
+}
+
+.container{
+    background-image: url(Starry-Sky-Background-WallpaperTag.jpg);
+    position: relative;
+    /* margin-top: 50px; */
+    /* width: 1200px;
+    height: 600px; */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.character{
+    position: relative;
+    /* left: 60px; */
+    top: 0;
+    width: auto; 
+    height: auto;
+    overflow: hidden;
+    /* display: none; */
+    visibility: hidden;
+}
+
+.obstacleBottom{
+    width: 40px;
+    height: 85%;
+    background-color: crimson;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.obstacleTop{
+    width: 40px;
+    height: 0;
+    /* border: 2px solid red; */
+    background-color: crimson;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+@keyframes obstacleMotion{
+    0% {right: 0;}
+    25% {right: 25%}
+    50% {right: 50%}
+    75% {right: 75%;}
+    100% {right: 100%;}
+}
+
+.animate{
+    animation: obstacleMotion 2s infinite linear;
+}
+
+.animateMedium{
+    animation: obstacleMotion 1.5s infinite linear;
+}
+
+.animateFast{
+    animation: obstacleMotion 1s infinite linear;
+}
+
+.score{
+    position: absolute;
+    right: 50px;
+    top: 0;
+    height: 30px;
+    color: white;
+}
+
+.highScore{
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    height: 30px;
+    color: white;
+}
+
+.newGame{
+    position: absolute;
+    max-width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.newGame button{
+    background: transparent;
+    color: white;
+    font-size: 1.5rem;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#leadBtn a{
+    text-decoration: none;
+    color: white;
+}
+
+.touchButtons{
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    /* width: 200px; */
+    overflow: hidden;
+    display: none;
+}
+
+.upArrow{
+    margin: 40px auto;
+}
+
+
+.downArrow{
+    margin: 40px auto;
+}
+
+.upArrow img{
+    width: 50px;
+    opacity: 0.5;
+    /* border-radius: 500px; */
+}
+
+.downArrow img{
+    width: 50px;
+    transform: rotate(180deg);
+    opacity: 0.5;
+    /* border-radius: 500px; */
+}
+
+.optionsMenu{
+    /* height: 50%; */
+    width: 50%;
+    background: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+
+.optionTitle{
+    text-align: center;
+    color: white;
+}
+.backBtn{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.maps{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+    top: 20%;
+    margin: 5% auto;
+    color: white;
+}
+
+.map img{
+    height: 100px;
+    width: 150px;
+}
+
+.description{
+    text-align: center;
+}
+
+#map1, #map2{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 800px)
+{
+    .touchButtons{
+        display: block;
+    }
+
+    .map{
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 700px)
+{
+    .map{
+        transform: scale(0.6);
+    }
+
+    .newGame button{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .container-wrapper{
+        height: 90vh;
+    }
+}
