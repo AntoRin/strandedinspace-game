@@ -250,12 +250,13 @@ function checkStatus(){
                     if(newUpdate === false)
                         res.leaderboards.push({"name": localStorage.getItem("nickname"), "score": highscore});
 
+                    sortObjectArr(res.leaderboards);
+
                     let options = {
                         method: "POST",
                         headers: {"Content-Type": "application/json"},
                         body: JSON.stringify(res)
                     };
-                    console.log("data sent");
                     let update = await fetch("/api", options);
                 })
             }
@@ -271,4 +272,22 @@ async function getFromDb()
     let request = await fetch("./leaderboards_data.json");
     let response = await request.json();
     return response;
+}
+
+//helper function to sort
+
+function sortObjectArr(objectArr)
+{
+    for(let i = 0; i < objectArr.length; i++)
+    {
+        for(let j = i+1; j < objectArr.length; j++)
+        {
+            if(objectArr[j].score > objectArr[i].score)
+            {
+                let temp = objectArr[i];
+                objectArr[i] = objectArr[j];
+                objectArr[j] = temp;
+            }
+        }
+    }
 }

@@ -3,7 +3,7 @@ async function leaderboards()
     let request = await fetch("./leaderboards_data.json");
     let response = await request.json();
     // console.log(response);
-    let list = document.querySelector(".data ul");
+    let list = document.querySelector(".data ol");
     
     for(let i=0; i < response.leaderboards.length; i++)
     {
