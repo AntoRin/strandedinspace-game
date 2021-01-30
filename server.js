@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const MongoClient = require("mongodb").MongoClient;
-const db = require("./db.js");
+const db = require(path.join(__dirname, "db.js"));
 
 require("dotenv").config();
 
