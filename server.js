@@ -25,6 +25,8 @@ app.use(express.json());
 
 
 app.get("/leaderboards/data", async (req, res) => {
+    const Client = new MongoClient(uri, mongoOptions);
+    await db.connect(Client);
     let leaderboards = await db.listEntries(Client);
     res.json(leaderboards);
 });
