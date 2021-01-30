@@ -5,7 +5,7 @@ const db = require("./db.js");
 
 require("dotenv").config();
 
-const uri = process.env.dbURI;
+const uri = process.env.MONGODB_URI;
 const mongoOptions = {
     useUnifiedTopology: true
 };
