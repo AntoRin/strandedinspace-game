@@ -194,7 +194,7 @@ start.onclick = ()=>{
 // END GAME 
 
 
-function checkStatus(){
+async function checkStatus(){
 
     if(character.offsetTop < obstacleTop.offsetHeight || character.offsetTop > (obstacleTop.offsetHeight + characterImg.offsetHeight))
     {
@@ -237,57 +237,44 @@ function checkStatus(){
             
             if(newHighscore === true)
             {     
-               getFromDb().then(async (res) => {
-                   let newUpdate = false;
-                   for(person of res.leaderboards)
-                   {
-                        if(person.name === localStorage.getItem("nickname")){
-                            person.score = highscore;
-                            newUpdate = true;
-                        }
-                   }
+               let name = localStorage.getItem("nickname");
+               let findName = await fetch(`/leaderboards/data/${name}`);
+               let isPresent = await findName.json();
+               let body = {
+                name: name,
+                score: highscore
+                };
 
-                    if(newUpdate === false)
-                        res.leaderboards.push({"name": localStorage.getItem("nickname"), "score": highscore});
+               console.log(name + " " + isPresent.found);
+               isPresent.found ? update(body) : insert(body);
 
-                    sortObjectArr(res.leaderboards);
-
-                    let options = {
-                        method: "POST",
-                        headers: {"Content-Type": "application/json"},
-                        body: JSON.stringify(res)
+               async function update(body)
+               {
+                   console.log("update fn");
+                    let fetchOptions = {
+                        method: "PUT",
+                        headers: {"Content-Type": "Application/JSON"},
+                        body: JSON.stringify(body)
                     };
-                    let update = await fetch("/api", options);
-                })
+
+                    await fetch("/leaderboards/data", fetchOptions);
+                }
+
+                async function insert(body)
+                {
+                    console.log("insert fn");
+                    let fetchOptions = {
+                        method: "POST",
+                        headers: {"Content-Type": "Application/JSON"},
+                        body: JSON.stringify(body)
+                    };
+
+                    await fetch("leaderboards/data", fetchOptions);
+                }
+
             }
         }
     }
 }
 // xEND GAME 
 
-//Request data
-
-async function getFromDb()
-{
-    let request = await fetch("./leaderboards_data.json");
-    let response = await request.json();
-    return response;
-}
-
-//helper function to sort
-
-function sortObjectArr(objectArr)
-{
-    for(let i = 0; i < objectArr.length; i++)
-    {
-        for(let j = i+1; j < objectArr.length; j++)
-        {
-            if(objectArr[j].score > objectArr[i].score)
-            {
-                let temp = objectArr[i];
-                objectArr[i] = objectArr[j];
-                objectArr[j] = temp;
-            }
-        }
-    }
-}

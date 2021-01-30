@@ -1,8 +1,8 @@
 async function leaderboards()
 {
-    let request = await fetch("./leaderboards_data.json");
+    let request = await fetch("/leaderboards/data");
     let response = await request.json();
-    // console.log(response);
+    console.log(response);
     let list = document.querySelector(".data ol");
     
     for(let i=0; i < response.leaderboards.length; i++)
@@ -13,6 +13,3 @@ async function leaderboards()
 
 
 const dataArr = leaderboards();
-
-
-

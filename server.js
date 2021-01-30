@@ -1,29 +1,52 @@
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
+const MongoClient = require("mongodb").MongoClient;
+const db = require("./db.js");
+
+require("dotenv").config();
+
+const uri = process.env.dbURI;
+const mongoOptions = {
+    useUnifiedTopology: true
+};
+const Client = new MongoClient(uri, mongoOptions);
+db.connect(Client);
 
 const app = express();
 
 app.use(express.static("./public"));
 app.use(express.json());
 
-app.post("/api", (req, res) => {
-    const data = req.body;
-    console.log("received post request");
-    if(data)
-    {
-        fs.writeFile("./public/leaderboards_data.json", JSON.stringify(data,null,4), err => {
-            if(err)
-                console.log(err);
-            
-            else
-                console.log("File updated");
-        })
-    }
-    res.end();
-})
 
-const port = process.env.PORT || 3000;
+
+app.get("/leaderboards/data", async (req, res) => {
+    let leaderboards = await db.listEntries(Client);
+    res.json(leaderboards);
+});
+
+app.get("/leaderboards/data/:name", async (req, res) => {
+    let name = req.params.name;
+    let result = await db.findEntry(Client, name);
+    let isPresent = {
+        found: result
+    };
+    res.json(isPresent);
+});
+
+app.put("/leaderboards/data", async (req, res) => {
+    const data = req.body;
+    await db.findAndUpdate(Client, data);
+    res.end();
+});
+
+
+app.post("/leaderboards/data", async (req, res) => {
+    const data = req.body;
+    await db.addEntry(Client, data);
+    res.end();
+});
+
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
