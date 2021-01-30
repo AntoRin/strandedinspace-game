@@ -9,8 +9,8 @@ const uri = process.env.MONGODB_URI;
 const mongoOptions = {
     useUnifiedTopology: true
 };
-// const Client = new MongoClient(uri, mongoOptions);
-// db.connect(Client);
+const Client = new MongoClient(uri, mongoOptions);
+db.connect(Client);
 
 const app = express();
 
@@ -20,8 +20,6 @@ app.use(express.json());
 
 
 app.get("/leaderboards/data", async (req, res) => {
-    const Client = new MongoClient(uri, mongoOptions);
-    await db.connect(Client);
     let leaderboards = await db.listEntries(Client);
     res.json(leaderboards);
 });
