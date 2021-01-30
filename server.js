@@ -9,13 +9,8 @@ const uri = process.env.MONGODB_URI;
 const mongoOptions = {
     useUnifiedTopology: true
 };
-const Client = new MongoClient(uri, mongoOptions);
-db.connect(Client, (err) => {
-    if(err)
-    {
-        console.log("error encountered while trying to connect to your database: " + err);
-    }
-});
+// const Client = new MongoClient(uri, mongoOptions);
+// db.connect(Client);
 
 const app = express();
 
