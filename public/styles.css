@@ -21,6 +21,7 @@ body{
     width: 100%;
     height: 100%;
     overflow: hidden;
+    z-index: 1;
 }
 
 .character{
@@ -32,6 +33,7 @@ body{
     overflow: hidden;
     /* display: none; */
     visibility: hidden;
+    z-index: 1;
 }
 
 .obstacleBottom{
@@ -42,17 +44,18 @@ body{
     right: 0;
     bottom: 0;
     display: none;
+    z-index: 1;
 }
 
 .obstacleTop{
     width: 40px;
     height: 0;
-    /* border: 2px solid red; */
     background-color: crimson;
     position: absolute;
     right: 0;
     top: 0;
     display: none;
+    z-index: 1;
 }
 
 @keyframes obstacleMotion{
@@ -81,6 +84,7 @@ body{
     top: 0;
     height: 30px;
     color: white;
+    /* z-index: 1; */
 }
 
 .highScore{
@@ -89,6 +93,7 @@ body{
     top: 40px;
     height: 30px;
     color: white;
+    /* z-index: 1; */
 }
 
 .newGame{
@@ -97,7 +102,10 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
 }
 
 .newGame button{

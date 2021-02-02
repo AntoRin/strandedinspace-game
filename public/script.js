@@ -55,7 +55,6 @@ function moveCharacter(event)
          }
      }
 }
-// xCHARACTER MOVEMENT
 
 
 
@@ -133,7 +132,6 @@ function changeHeight()
     //     },500)
     // }
 }
-// xOBSTACLES 
 
 
 //OPTIONS
@@ -158,7 +156,6 @@ map2.onclick = (btn) => {
     var imageSource = document.getElementById("map2Image").src;
     container.style.backgroundImage = `url(${imageSource})`;
 }
-//xOPTIONS
 
 
 // START GAME 
@@ -186,13 +183,16 @@ start.onclick = ()=>{
     start.style.display = "none";
     optionsBtn.style.display = "none";
     leadBtn.style.display = "none";
+    setTimeout(beginCometAnimation, 4000);
+    state = true;
+    let sound = document.getElementById("rocket-sound");
+    sound.play();
+    sound.loop = true;
 }
-// xSTART GAME 
 
 
 
 // END GAME 
-
 
 async function checkStatus(){
 
@@ -203,6 +203,9 @@ async function checkStatus(){
         var charRightWidth = charContainerWidth - characterImg.offsetWidth;
         if(obPos < charContainerWidth && obPos > charRightWidth)
         {
+            let sound = document.getElementById("rocket-sound");
+            sound.pause();
+            state = false;
             clearInterval(game);
             clearInterval(checkDefeat);
             alert("Defeat");
@@ -276,5 +279,4 @@ async function checkStatus(){
         }
     }
 }
-// xEND GAME 
 

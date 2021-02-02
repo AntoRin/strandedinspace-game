@@ -6,6 +6,7 @@
         <meta name="description" content="A simple space game">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="comet.css">
     </head>
 
     <body>
@@ -13,6 +14,9 @@
             <div class="container">
                 <div class="character">
                     <img src="rocket-312455.svg" alt="">
+                </div>
+                <div>
+                    <audio id="rocket-sound" type="audio/wav" src="./mixkit-spaceship-engine-whoosh-working-2739.wav"></audio>
                 </div>
                 <div class="obstacleBottom"></div>
                 <div class="obstacleTop"></div>
@@ -26,6 +30,24 @@
                     <button type="button" id="start">NEW GAME</button>
                     <button type="button" id="options">OPTIONS</button>
                     <button type="button" id="leadBtn"><a href="leaderboards.html">LEADERBOARDS</a></button>
+                </div>
+
+                <div class="comet">
+                    <div>
+                        <img src="./alpine-landscape-rock-rubble-01g-al1.svg" alt="">
+                    </div>
+                    <div>
+                        <img src="./alpine-landscape-rock-rubble-01g-al1.svg" alt="">
+                    </div>
+                    <div>
+                        <img src="./alpine-landscape-rock-rubble-01g-al1.svg" alt="">
+                    </div>
+                    <div>
+                        <img src="./alpine-landscape-rock-rubble-01g-al1.svg" alt="">
+                    </div>
+                    <div>
+                        <img src="./alpine-landscape-rock-rubble-01g-al1.svg" alt="">
+                    </div>
                 </div>
             </div>
             
@@ -62,6 +84,7 @@
             </div>
         </div>
 
+        <script src="comet.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
