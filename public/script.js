@@ -163,7 +163,7 @@ var start = document.getElementById("start");
 var leadBtn = document.getElementById("leadBtn");
 var game; 
 var checkDefeat; 
-start.onclick = ()=>{
+start.onclick = () => {
     // document.documentElement.requestFullscreen();
     if(getComputedStyle(character).getPropertyValue("visibility") === "hidden")
     {
@@ -183,8 +183,8 @@ start.onclick = ()=>{
     start.style.display = "none";
     optionsBtn.style.display = "none";
     leadBtn.style.display = "none";
-    setTimeout(beginCometAnimation, 4000);
-    state = true;
+    // setTimeout(beginCometAnimation, 4000);
+    // state = true;
     let sound = document.getElementById("rocket-sound");
     sound.play();
     sound.loop = true;
@@ -205,7 +205,7 @@ async function checkStatus(){
         {
             let sound = document.getElementById("rocket-sound");
             sound.pause();
-            state = false;
+            // state = false;
             clearInterval(game);
             clearInterval(checkDefeat);
             alert("Defeat");
